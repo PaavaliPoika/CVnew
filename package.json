@@ -27,7 +27,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",
-        "devicon": "^2.2.0",
+        "devicon": "^2.6.0",
         "popper.js": "^1.16.1",
         "rfs": "^9.0.3",
         "sweet-scroll": "^4.0.0"

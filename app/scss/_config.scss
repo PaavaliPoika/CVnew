@@ -1,0 +1,185 @@
+// USER VARIABLES SECTION
+$main: #2f4c58;
+$sec: #a7b8b5;
+$light: #e4dbd9;
+$graybeige: #cfc5bc;
+$lightblue:#267491;
+$llightblue:#77B2C8;
+$gblue: #b2b3b8;
+$dgblue: #8392a3;
+$lgblue: #d4dfe5;
+$gcyan: #a5b4b9;
+$dcyan: #40817a;
+$accent: #63a583;
+$fb-cl:#3b5998;
+$ml-cl: #ff0000;
+$tlg-cl: #0088cc;
+$sky-cl: #00aff0;
+$in-cl: #0077b5;
+$ins-cl: #c13584;
+$git-cl: #6e5494;
+$bg: #222;
+$bgb: #333;
+$bgg: #2a2a2a;
+$cut: 550px;
+$cutPad: 1094px;
+$fontsize: 16px; // Body Font Size
+$system: -apple-system,
+BlinkMacSystemFont,
+Arial,
+sans-serif; // System Font Family
+$montserrat-a: 'Montserrat Alternates',
+sans-serif;
+// Bootstrap compatible gutter variable => $gutter
+$grid-gutter-width: 30px;
+$gutter: $grid-gutter-width;
+// IMPORT SECTION
+@import 'node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss'; // Fontawesome mixim
+@import "node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+@import 'node_modules/@fortawesome/fontawesome-free/scss/regular.scss';
+@import 'node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
+@import 'node_modules/rfs/scss';
+// FONTS LOAD SECTION
+@mixin font($fname, $fstyle, $fweight, $furl) {
+    @font-face {
+        font-family: $fname;
+        font-style: $fstyle;
+        font-weight: $fweight;
+        // font-display: swap; // Uncomment to initially display system fonts
+        src: local($fname), url($furl) format('woff2');
+    }
+}
+
+@include font('Montserrat Alternates', normal, 300, '../fonts/montserrat-alternates-latin_cyrillic-300.woff2');
+@include font('Montserrat Alternates', normal, 400, '../fonts/montserrat-alternates-latin_cyrillic-regular.woff2');
+@include font('Montserrat Alternates', italic, 400, '../fonts/montserrat-alternates-latin_cyrillic-italic.woff2');
+@include font('Montserrat Alternates', normal, 500, '../fonts/montserrat-alternates-latin_cyrillic-500.woff2');
+@include font('Montserrat Alternates', normal, 700, '../fonts/montserrat-alternates-latin_cyrillic-700.woff2');
+@include font('Montserrat Alternates', normal, 900, '../fonts/montserrat-alternates-latin_cyrillic-900.woff2');
+@include font('Font Awesome 5 Free', normal, 400, '../fonts/webfonts/fa-regular-400.woff2');
+@include font('Font Awesome 5 Brands', normal, 400, '../fonts/webfonts/fa-brands-400.woff2');
+@include font('Font Awesome 5 Free', normal, 900, '../fonts/webfonts/fa-solid-900.woff2');
+// GENERAL DOCUMENT STYLES
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $montserrat-a;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+a {
+    color: $lightblue;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+a:hover {
+    color: $llightblue;
+    text-decoration: none;
+}
+
+::placeholder {
+    color: $light;
+}
+
+::selection {
+    background-color: $accent;
+    color: #fff;
+}
+
+input,
+textarea {
+    outline: none;
+    &:focus:required:invalid {
+        border-color: red
+    }
+    &:required:valid {
+        border-color: green
+    }
+}
+
+.blocktitle {
+    margin-bottom: 20px;
+    text-align: center;
+    color: $main;
+    &::before {
+        content: "< ";
+        color: $lightblue;
+    }
+    &::after {
+        content: " >";
+        color: $lightblue;
+    }
+}
+
+section {
+    padding: 20px 0;
+    background-color: $graybeige;
+}
+
+.content_list {
+    list-style-type: none;
+    padding-left: 2em;
+    li:before {
+        content: '» ';
+        color: $lightblue;
+        font-weight: bolder;
+        font-size: 1.2em;
+    }
+}
+
+
+/* Parallax */
+
+.jarallax {
+    position: relative;
+    min-height: 15vh;
+    z-index: 0;
+}
+
+.jarallax>.jarallax-img {
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+
+/* Loader */
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d4dfe5;
+    color: $lightblue;
+    font-size: 30vh;
+    z-index: 9999;
+    transition: 3s ease-in;
+    span {
+        display: inline-block;
+        animation: pulse 0.4s alternate infinite ease-in-out;
+        &:nth-child(odd) {
+            animation-delay: 0.4s;
+        }
+    }
+}
+
+@keyframes pulse {
+    to {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+}
